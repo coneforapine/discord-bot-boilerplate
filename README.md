@@ -22,15 +22,15 @@ Bir event oluşturmak için tek yapmanız gereken tek şey events klasörüne ye
     constructor (client) {
         this.name = 'message'; // Burayı sadece dosya ismi event ismi ile aynı olmayacak ise ekleyin. Eğer dosya ismi aynı ise sadece boş constructor oluşturun.
     }
-    //Aşağıdaki methodda this, client'ı işaret ediyor. Eğer class içerisinde başka bir methoda erişmeniz gerekirse class'a verdiğiniz isim ile erişebilirsiniz.
+    //Aşağıdaki methodda this Message class'ını işaret ediyor. Yaşasın <function>.bind()! 
     async run(msg) {
         if(msg.author.bot) return;
 
-        const prefix = this.config.prefix;
+        const prefix = this.client.config.prefix;
         const args = msg.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
 
-        const cmd = this.commands.get(command) || this.commandAliases.get(command); 
+        const cmd = this.client.commands.get(command) || this.client.commandAliases.get(command); 
         if(!cmd) return;
 
         await cmd.run(msg, args);
@@ -48,7 +48,7 @@ Aynı bu örnek
         this.aliases = ['p']; // Buraya istediğiniz kadar alias ekleyebilirsiniz. Alias'ın ne demek olduğuna gelecek olursak basit bir şekilde takma ad. Örneğin bu komut <prefix>ping yada <prefix>p ile çalışacak
     }
 
-    // Event'deki run methodunun aksine burada this komut dosyasını işaret ediyor. Yani başka bir method ekleyecek olursanız this.methodİsmi şeklinde erişebilirsiniz.
+    //this içinde bulunduğunuz dosyayı işaret eder.
     async run(msg, ...args) {
         const m = await msg.channel.send("Ping?");
         m.edit(`Pong! Gecikme sadece ${m.createdTimestamp - msg.createdTimestamp}ms. API gecikmesi ise ${Math.round(this.client.ping)}ms.`)
