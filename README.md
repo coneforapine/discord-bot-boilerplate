@@ -18,7 +18,7 @@ Daha sonra ise config.json dosyasını kendinize göre düzenleyin.
 Bir event oluşturmak için tek yapmanız gereken tek şey events klasörüne yeni bir dosya ekleyip aşağıdaki örnek üzerinden devam etmek.
 
 ```js
-    module.exports = class Message {
+module.exports = class Message {
     constructor (client) {
         this.name = 'message'; // Burayı sadece dosya ismi event ismi ile aynı olmayacak ise ekleyin. Eğer dosya ismi aynı ise sadece boş constructor oluşturun.
     }
@@ -39,9 +39,9 @@ Bir event oluşturmak için tek yapmanız gereken tek şey events klasörüne ye
 ```
 
 ## Komut oluşturma
-Aynı bu örnek 
+Aynı bu örnekteki gibi yapabilirsiniz. Eğer argüman kullanmak isterseniz tek yapmanız gereken `run` methoduna `args` parametresini eklemeniz yeterli.
 ```js
-   module.exports = class Ping {
+module.exports = class Ping {
     constructor(client) {
         this.client = client; // Class içerisinde her yerden client'a erişmek için
         this.name = 'ping'; // İsim vermezseniz komut dosya ismiyle çalışacak

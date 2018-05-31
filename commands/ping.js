@@ -3,6 +3,7 @@ module.exports = class Ping {
         this.client = client;
         this.name = 'ping';
         this.aliases = ['p'];
+        this.help = 'Ping ve pong, ama Ping-Pong değil. Mükemmel değil mi?'
     }
 
     async run(msg, ...args) {

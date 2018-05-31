@@ -1,5 +1,5 @@
 const { Client } = require('./lib/index');
-const { token } = require('./config.json');
+const { token } = require('./conf.json');
 
 const client = new Client();
 

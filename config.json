@@ -1,4 +1,5 @@
 {
     "token": "DISCORD API TOKEN",
-    "prefix": "prefix?"
+    "prefix": "prefix?",
+    "ownerID": "Bot sahibinin idsi"
 }
